@@ -21,3 +21,5 @@ Se listaran las librerias/dependencias que se usaran en el proyecto de primera i
 - Inciar modo desarrollo: `pnpm dev `
 - Construir para podrucción: `pnpm build `
 - Construir vista previa de producción: `pnpm preview `
+- Formatear el codigo: `pnpm format `
+- Revisar errores de codigo: `pnpm lint `

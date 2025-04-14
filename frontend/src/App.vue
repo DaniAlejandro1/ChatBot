@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="content bg-amber-400">
     <h1>Rsbuild with Vue</h1>
     <p>Start building amazing things with Rsbuild.</p>
   </div>

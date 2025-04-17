@@ -1,0 +1,23 @@
+@layer components {
+   .header-1 {
+      color: var(--color-font-500);
+      font-size: var(--text-header-1);
+      font-family: var(--font-roboto-condensed);
+      font-weight: 500;
+      line-height: normal;
+   }
+   .header-2 {
+      color: var(--color-font-500);
+      font-size: var(--text-header-2);
+      font-family: var(--font-roboto-condensed);
+      font-weight: 500;
+      line-height: normal;
+   }
+   .header-3 {
+      color: var(--color-font-500);
+      font-size: var(--text-header-3);
+      font-family: var(--font-roboto-condensed);
+      font-weight: 500;
+      line-height: normal;
+   }
+}

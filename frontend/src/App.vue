@@ -1,8 +1,9 @@
+<script setup lang="ts">
+   import { RouterView } from 'vue-router';
+</script>
+
 <template>
-   <div class="content bg-amber-400">
-      <h1>Rsbuild with Vue</h1>
-      <p>Start building amazing things with Rsbuild.</p>
-   </div>
+   <RouterView />
 </template>
 
 <style scoped>

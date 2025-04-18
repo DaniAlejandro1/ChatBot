@@ -1,8 +1,4 @@
-type Topic = {
-   img: string;
-   title: string;
-   description: string;
-};
+import type { Topic } from '@/utils/type';
 
 export const topyc: Topic[] = [
    {

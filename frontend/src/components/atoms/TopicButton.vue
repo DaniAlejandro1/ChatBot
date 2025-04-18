@@ -4,12 +4,9 @@
    import moneyCalcIcon from '@/assets/icon/money-calculator.png';
    import moneyIcon from '@/assets/icon/money-alt.png';
    import newsIcon from '@/assets/icon/news.png';
+   import type { Topic } from '@/utils/type';
 
-   const props = defineProps<{
-      img: string;
-      title: string;
-      description: string;
-   }>();
+   const props = defineProps<Topic>();
 
    const imageMap: Record<string, string> = {
       'cloud.png': cloudIcon,

@@ -3,7 +3,7 @@
    import AppFooter from '@/components/organisms/AppFooter.vue';
    import AppHeader from '@/components/organisms/AppHeader.vue';
    import TopicButton from '@/components/atoms/TopicButton.vue';
-   import { topyc } from '../utils/constants';
+   import { topyc } from '@/utils/constants';
 </script>
 
 <template>

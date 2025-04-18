@@ -6,7 +6,7 @@ from config import settings as cf
 
 def create_app() -> FastAPI:
     app = FastAPI(
-        title =  cf.PROJECT_NAME,
+        title=cf.PROJECT_NAME,
         generate_unique_id_function=lambda router: f"{router.tags[0]}-{router.name}",
 
     )
@@ -23,14 +23,11 @@ def create_app() -> FastAPI:
     # Include the routers
     app.include_router(api_router)
 
-
-
-
     return app
 
 app = create_app()
 
-if __name__== "__main__":
+if __name__ == "__main__":
     host = "localhost"
     port = 8000
     uvicorn.run(app, host=host, port=port)

@@ -31,12 +31,12 @@
       </header>
       <nav>
          <ul
-            class="flex flex-col gap-3 p-4 body-1 text-background-default hover:bg-primary-300 hover:text-font-500 cursor-pointer overflow-y-scroll"
+            class="flex flex-col gap-3 p-4 body-1 text-background-default cursor-pointer overflow-y-scroll"
          >
             <li
                v-for="(chat, index) in chats"
                :key="index"
-               class="flex flex-row p-2 items-center border-[1.5px] border-background-default bg-font-400 rounded-lg overflow-hidden active:bg-primary-300"
+               class="flex flex-row p-2 items-center border-[1.5px] border-background-default bg-font-400 rounded-lg overflow-hidden hover:bg-primary-300 active:bg-primary-300"
             >
                <img
                   class="size-7"
@@ -44,7 +44,7 @@
                   alt="history icon"
                />
                <button
-                  class="block w-full text-left px-2 p-2"
+                  class="block w-full text-left px-2 p-2 cursor-pointer"
                   :aria-label="'Abrir ' + chat"
                >
                   {{ chat }}

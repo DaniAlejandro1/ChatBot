@@ -12,7 +12,7 @@
    </main>
 
    <!-- Aqui van los componentes relacionados al footer -->
-   <footer class="h-[12%] w-full bg-amber-700">
+   <footer class="h-[12%] w-full flex flex-row justify-between items-center gap-4">
       <slot name="footer"></slot>
    </footer>
 </template>

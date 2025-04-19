@@ -36,10 +36,15 @@
             <li
                v-for="(chat, index) in chats"
                :key="index"
-               class="border-[1.5px] border-background-default bg-font-400 rounded-lg overflow-hidden active:bg-primary-300"
+               class="flex flex-row p-2 items-center border-[1.5px] border-background-default bg-font-400 rounded-lg overflow-hidden active:bg-primary-300"
             >
+               <img
+                  class="size-7"
+                  src="@/assets/icon/history-rounded.png"
+                  alt="history icon"
+               />
                <button
-                  class="block w-full text-left px-4 py-2"
+                  class="block w-full text-left px-2 p-2"
                   :aria-label="'Abrir ' + chat"
                >
                   {{ chat }}

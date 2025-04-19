@@ -1,14 +1,14 @@
 from fastapi import APIRouter, Query
-from src.service.clima import get_weather
+from src.service.clima import get_clima
 from src.utils.response_format import ResponseFormat
 
 
-router = APIRouter(prefix="/clima")
+router = APIRouter()
 
-@router.get("/")
+@router.get("/chat/topico/clima")
 async def clima(ciudad: str = Query(...)):
     try:
-        data = await get_weather(ciudad)
+        data = await get_clima(ciudad)
         return ResponseFormat.success(data)
-    except Exception as e:
-        return ResponseFormat.error("404", "No se encontró", {"detalle": "clima no disponible"})
+    except Exception:
+        return ResponseFormat.error_personalizado()

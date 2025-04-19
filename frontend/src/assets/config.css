@@ -7,20 +7,20 @@
    --color-primary-700: oklch(35.69% 0.214 276.08);
    --color-primary-800: oklch(26.73% 0.155 277.6);
 
-   --color-font-200: oklch(74.76% 0 nan);
-   --color-font-300: oklch(61.67% 0 nan);
-   --color-font-400: oklch(47.48% 0 nan);
-   --color-font-500: oklch(32.11% 0 nan);
-   --color-font-600: oklch(28.09% 0 nan);
-   --color-font-700: oklch(23.93% 0 nan);
-   --color-font-800: oklch(19.13% 0 nan);
+   --color-font-200: oklch(74.76% 0 0);
+   --color-font-300: oklch(61.67% 0 0);
+   --color-font-400: oklch(47.48% 0 0);
+   --color-font-500: oklch(32.11% 0 0);
+   --color-font-600: oklch(28.09% 0 0);
+   --color-font-700: oklch(23.93% 0 0);
+   --color-font-800: oklch(19.13% 0 0);
 
    --color-success: oklch(65% 0.1913 148.46);
    --color-error: oklch(71.42% 0.1722 23.65);
 
-   --color-background-default: oklch(98.51% 0 nan);
-   --color-brand-700: oklch(79.84% 0 nan);
-   --color-brand-800: oklch(58.97% 0 nan);
+   --color-background-default: oklch(98.51% 0 0);
+   --color-brand-700: oklch(79.84% 0 0);
+   --color-brand-800: oklch(58.97% 0 0);
 
    --font-roboto: 'Roboto', Inter, Avenir, Helvetica, Arial, sans-serif;
    --font-roboto-condensed:

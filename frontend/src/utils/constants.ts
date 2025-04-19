@@ -20,6 +20,6 @@ export const topyc: Topic[] = [
       img: 'news.png',
       title: 'Noticias del dia',
       description:
-         'Quiero saber las noticias más importantes sobre mi empresa de celulosa.',
+         'Quiero saber las noticias sobre mi rubro de celulosa.',
    },
 ];

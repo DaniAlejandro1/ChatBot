@@ -17,7 +17,6 @@
    >
       <img class="size-12" src="@/assets/icon/menu-rounded.png" alt="menu icon" />
    </button>
-   <ToggleMenu :is-sidebar-open="isSidebarOpen" :toggle-sidebar="toggleSidebar" />
-
+   <ToggleMenu :isSidebarOpen="isSidebarOpen" :toggleSidebar="toggleSidebar" />
    <NewChatButton />
 </template>

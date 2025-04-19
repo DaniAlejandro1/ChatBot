@@ -3,37 +3,49 @@
       isSidebarOpen: boolean;
       toggleSidebar: () => void;
    }>();
+
+   const chats: string[] = [
+      'Chat 1, no ando creativo',
+      'Chat 2, no ando creativo',
+      'Chat 3, no ando creativo',
+   ];
 </script>
 
 <template>
-   <div>
-      <div
-         v-if="props.isSidebarOpen"
-         class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg border-r border-gray-300 z-50"
+   <aside
+      v-if="props.isSidebarOpen"
+      class="fixed top-0 left-0 h-full w-full bg-font-600"
+      aria-label="Sidebar de historial de chats"
+   >
+      <header
+         class="p-4 flex justify-between items-center border-b border-background-default"
       >
-         <div class="p-4 flex justify-between items-center border-b border-gray-300">
-            <h2 class="text-lg font-bold">Sidebar</h2>
-            <button @click="toggleSidebar" class="text-gray-500 hover:text-gray-700">
-               ✕
-            </button>
-         </div>
-         <ul class="py-4">
-            <li>
-               <button class="block w-full text-left px-4 py-2 hover:bg-gray-100">
-                  Opción 1
-               </button>
-            </li>
-            <li>
-               <button class="block w-full text-left px-4 py-2 hover:bg-gray-100">
-                  Opción 2
-               </button>
-            </li>
-            <li>
-               <button class="block w-full text-left px-4 py-2 hover:bg-gray-100">
-                  Opción 3
+         <h2 class="header-3 text-background-default">Historial de Chats</h2>
+         <button
+            @click="toggleSidebar"
+            class="text-background-default header-3 font-bold cursor-pointer py-1.5 px-3 rounded-4xl hover:bg-primary-400 active:bg-primary-400"
+            aria-label="Cerrar sidebar"
+         >
+            ✕
+         </button>
+      </header>
+      <nav>
+         <ul
+            class="flex flex-col gap-3 p-4 body-1 text-background-default hover:bg-primary-300 hover:text-font-500 cursor-pointer overflow-y-scroll"
+         >
+            <li
+               v-for="(chat, index) in chats"
+               :key="index"
+               class="border-[1.5px] border-background-default bg-font-400 rounded-lg overflow-hidden active:bg-primary-300"
+            >
+               <button
+                  class="block w-full text-left px-4 py-2"
+                  :aria-label="'Abrir ' + chat"
+               >
+                  {{ chat }}
                </button>
             </li>
          </ul>
-      </div>
-   </div>
+      </nav>
+   </aside>
 </template>

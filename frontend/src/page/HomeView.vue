@@ -21,8 +21,8 @@
                   </strong>
                   Dime en qué puedo ayudarte.
                </h1>
-               <p class="header-2 italic">
-                  ¡Cuéntame tu duda y con gusto te asistiré!
+               <p class="header-2 italic xl:text-center">
+                  ¡Cuéntame tu duda y con gusto <br />te asistiré!
                </p>
             </header>
          </section>

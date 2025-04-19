@@ -14,12 +14,10 @@
 <template>
    <aside
       v-if="props.isSidebarOpen"
-      class="fixed top-0 left-0 h-full w-full bg-font-600"
+      class="fixed top-0 left-0 h-full w-full xl:w-2/5 bg-font-600"
       aria-label="Sidebar de historial de chats"
    >
-      <header
-         class="p-4 flex justify-between items-center border-b border-background-default"
-      >
+      <header class="p-4 flex justify-between items-center border-b border-background-default">
          <h2 class="header-3 text-background-default">Historial de Chats</h2>
          <button
             @click="toggleSidebar"
@@ -29,9 +27,9 @@
             ✕
          </button>
       </header>
-      <nav>
+      <nav class="size-full">
          <ul
-            class="flex flex-col gap-3 p-4 body-1 text-background-default cursor-pointer overflow-y-scroll"
+            class="size-full flex flex-col gap-3 p-4 body-1 text-background-default overflow-y-auto"
          >
             <li
                v-for="(chat, index) in chats"

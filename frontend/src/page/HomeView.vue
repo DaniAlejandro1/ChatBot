@@ -17,7 +17,7 @@
             <header class="flex flex-col gap-3">
                <h1 class="header-1 text-left">
                   <strong class="text-primary-500">
-                     Estoy aquí para ayudarte hoy.
+                     Estoy aquí para ayudarte.
                   </strong>
                   Dime en qué puedo ayudarte.
                </h1>
@@ -27,7 +27,7 @@
             </header>
          </section>
 
-         <section class="w-full h-fit flex flex-col gap-4">
+         <section class="w-full h-fit grid grid-cols-1 gap-4 xl:grid-cols-2">
             <TopicButton
                v-for="(item, index) in topyc"
                :key="index"

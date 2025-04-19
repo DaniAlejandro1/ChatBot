@@ -2,7 +2,7 @@
 
 <template>
    <!-- Aqui van los componentes relacionados al header -->
-   <header class="h-[12%] w-full flex flex-row justify-between items-center">
+   <header class="h-[12%] w-full flex flex-row justify-between items-center px-3">
       <slot name="header"></slot>
    </header>
 
@@ -12,7 +12,7 @@
    </main>
 
    <!-- Aqui van los componentes relacionados al footer -->
-   <footer class="h-[12%] w-full flex flex-row justify-between items-center gap-4">
+   <footer class="h-[12%] w-full flex flex-row justify-between items-center gap-4 px-3">
       <slot name="footer"></slot>
    </footer>
 </template>

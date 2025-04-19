@@ -22,7 +22,7 @@
 
 <template>
    <article
-      class="flex flex-row items-center justify-evenly p-2.5 box-border border-[1.5px] border-font-500 rounded-2xl active:bg-primary-200 hover:bg-primary-200 cursor-pointer"
+      class="flex flex-row items-center justify-evenly p-2.5 xl:h-24 box-border border-[1.5px] border-font-500 rounded-2xl active:bg-primary-200 hover:bg-primary-200 cursor-pointer"
    >
       <img class="size-8 mx-2" :src="imagePath" :alt="props.title" />
 

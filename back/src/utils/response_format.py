@@ -62,3 +62,12 @@ class ResponseFormat:
         }
 
 
+    @staticmethod
+    def success_clima(data: dict = None):
+        return {
+        "success": True,
+        "data": data or {},
+        "error": {
+            "detail": ""
+        }
+    }

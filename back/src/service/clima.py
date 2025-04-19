@@ -7,7 +7,7 @@ API_KEY = os.getenv('API_KEY')
 
 BASE_URL = "http://api.weatherapi.com/v1/current.json"
 
-async def get_clima(ciudad: str):
+async def get_clima(ciudad: str ):
     params = {
         "key": API_KEY,
         "q": ciudad
@@ -20,17 +20,7 @@ async def get_clima(ciudad: str):
 
             data = response.json()
 
-
-            return {
-                "location": {
-                    "name": data["location"]["name"],
-                    "country": data["location"]["country"]
-                },
-                "current": {
-                    "temp_c": data["current"]["temp_c"],
-                    "condition": {
-                        "text": data["current"]["condition"]["text"],
-                        "icon": data["current"]["condition"]["icon"]
-                    }
-                }
-            }
+            temperatura = data["current"]["temp_c"]
+            respuesta = f"{round(float(temperatura))} °C"
+            
+            return {respuesta}

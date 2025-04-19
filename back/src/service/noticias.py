@@ -6,7 +6,7 @@ from src.utils.response_format import ResponseFormat
 load_dotenv()
 
 API_KEY = os.getenv("NOTICIAS_API_KEY")
-URL = f"https://newsapi.org/v2/top-headlines?apiKey={API_KEY}&language=es&sortBy=publishedAt"
+URL = f"https://newsapi.org/v2/top-headlines?apiKey={API_KEY}&language=en&sortBy=publishedAt"
 
 async def get_noticias_recientes():
     async with httpx.AsyncClient() as client:

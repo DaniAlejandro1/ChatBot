@@ -6,9 +6,10 @@ from src.utils.response_format import ResponseFormat
 router = APIRouter()
 
 @router.get("/chat/topico/clima")
-async def clima(ciudad: str = Query(...)):
+async def clima():
+    ciudad = "Temuco"
     try:
         data = await get_clima(ciudad)
-        return ResponseFormat.success(data)
+        return ResponseFormat.success_clima(data)
     except Exception:
         return ResponseFormat.error_personalizado()

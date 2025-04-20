@@ -3,9 +3,10 @@ import type { ChatMessage, Comunication } from '@/utils/types'
 
 export const useChatsStore = defineStore('chats', {
    state: () => {
+      const savedChats = localStorage.getItem('chats');
       return {
-         chats: [] as ChatMessage[]
-      }
+         chats: savedChats ? (JSON.parse(savedChats) as ChatMessage[]) : [],
+      };
    },
 
    actions: {

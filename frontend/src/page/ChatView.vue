@@ -15,6 +15,8 @@
       message: [],
    });
 
+   store.addMessageToChat(Number(props.id), props.question, response.value);
+
    const addMessage = (id: number, message: string, response: string): void => {
       store.addMessageToChat(id, message, response);
    };

@@ -4,7 +4,7 @@
    import moneyCalcIcon from '@/assets/icon/money-calculator.png';
    import moneyIcon from '@/assets/icon/money-alt.png';
    import newsIcon from '@/assets/icon/news.png';
-   import type { Topic } from '@/utils/type';
+   import type { Topic } from '@/utils/types';
 
    const props = defineProps<Topic>();
 

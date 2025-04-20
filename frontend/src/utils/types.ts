@@ -11,7 +11,7 @@ export type Comunication = {
 }
 
 export type ChatMessage = {
-   id: string;
+   id: number;
    title: string;
    message: Comunication[]
 }

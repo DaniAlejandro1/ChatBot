@@ -1,7 +1,8 @@
 import { TOPIC, TOPIC_DESCRIPTION } from '@/utils/enums';
-import { computed } from 'vue';
+import { computed, shallowRef, ShallowRef } from 'vue';
 
 export const useTopicQuestion = (question: string) => {
+   const response: ShallowRef<string> = shallowRef<string>('Soy un robot');
    const primaryQuestion = computed(() => {
       if (question === TOPIC.CLIMA) {
          return TOPIC_DESCRIPTION.CLIMA;
@@ -16,5 +17,5 @@ export const useTopicQuestion = (question: string) => {
       }
    });
 
-   return primaryQuestion;
+   return { primaryQuestion, response };
 }

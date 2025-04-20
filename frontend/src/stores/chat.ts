@@ -13,7 +13,7 @@ export const useChatsStore = defineStore('chats', {
          this.chats.push(chat)
       },
 
-      addMessageToChat(chatId: string, question: string, response: string): void {
+      addMessageToChat(chatId: number, question: string, response: string): void {
          const chat = this.chats.find(c => c.id === chatId)
          if (chat) chat.message.push({ question, response } as Comunication)
       },
@@ -22,5 +22,6 @@ export const useChatsStore = defineStore('chats', {
 
    getters: {
       chatHistory: (state) => state.chats,
+      lengthChats: (state) => state.chats.length,
    }
 })

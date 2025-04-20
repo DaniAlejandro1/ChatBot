@@ -43,7 +43,7 @@
       </template>
 
       <template #footer>
-         <AppFooter />
+         <AppFooter :is-first-question="true" />
       </template>
    </MainLayout>
 </template>

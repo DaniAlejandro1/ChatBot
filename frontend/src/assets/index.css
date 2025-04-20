@@ -22,3 +22,11 @@ body {
    flex-direction: column;
    justify-content: space-between;
 }
+
+.border-button {
+   @apply border-[1.5px] border-font-500 rounded-2xl;
+}
+
+.interaction-button {
+   @apply cursor-pointer hover:bg-primary-200 active:bg-primary-200;
+}

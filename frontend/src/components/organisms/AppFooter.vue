@@ -1,18 +1,10 @@
 <script setup lang="ts">
    import router from '@/router/route';
-   import { watch, ShallowRef, shallowRef } from 'vue';
+   import { useChatBot } from '@/composables/useChatBot';
+   import { watch } from 'vue';
 
-   const question: ShallowRef<string> = shallowRef<string>('');
-   const props = defineProps<{ isFirstQuestion: boolean }>();
-   const errorMessage: ShallowRef<string> = shallowRef<string>('');
-
-   const goToChat = (question: string): void => {
-      if (props.isFirstQuestion && question.length > 0) {
-         router.push({ name: 'chat', params: { question } });
-      } else {
-         errorMessage.value = 'Por favor, escribe un mensaje.';
-      }
-   };
+   const props = defineProps<{ isFirstQuestion: boolean; id: string }>();
+   const { errorMessage, goToChat, question } = useChatBot(router, props.isFirstQuestion);
 
    watch(question, () => {
       if (question.value.length > 0) {
@@ -34,7 +26,7 @@
    />
    <button
       class="flex items-center justify-center h-2/3 w-24 xl:h-4/5 bg-primary-500 rounded-2xl cursor-pointer hover:bg-primary-300 active:bg-primary-300 active:scale-95"
-      @click="goToChat(question)"
+      @click="goToChat(question, id)"
    >
       <img class="w-10 xl:w-8" src="@/assets/icon/send-solid.png" alt="send solid" />
    </button>

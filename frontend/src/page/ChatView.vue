@@ -6,22 +6,16 @@
    import { useChatsStore } from '@/stores/chat';
 
    const store = useChatsStore();
-   const props = defineProps<{ question: string }>();
-
+   const props = defineProps<{ question: string; id: string }>();
    const { primaryQuestion, response } = useTopicQuestion(props.question);
 
    store.addChat({
-      id: store.lengthChats + 1,
+      id: Number(props.id),
       title: primaryQuestion.value,
-      message: [
-         {
-            question: primaryQuestion.value,
-            response: response.value,
-         },
-      ],
+      message: [],
    });
 
-   console.log('Cantidad de chats', store.lengthChats);
+   console.log('Props: ', props.id, props.question);
    console.log('Chats', store.chats);
 </script>
 
@@ -39,7 +33,7 @@
       </template>
 
       <template #footer>
-         <AppFooter :is-first-question="false" />
+         <AppFooter :is-first-question="false" :id="id" />
       </template>
    </MainLayout>
 </template>

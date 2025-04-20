@@ -1,5 +1,6 @@
 import { TOPIC, TOPIC_DESCRIPTION } from '@/utils/enums';
 import { computed, shallowRef, ShallowRef } from 'vue';
+import { Router } from 'vue-router';
 
 export const useTopicQuestion = (question: string) => {
    const response: ShallowRef<string> = shallowRef<string>('Soy un robot');
@@ -18,4 +19,18 @@ export const useTopicQuestion = (question: string) => {
    });
 
    return { primaryQuestion, response };
+}
+
+export const useChatBot = (router: Router, isFirstQuestion: boolean) => {
+   const question: ShallowRef<string> = shallowRef<string>('');
+   const errorMessage: ShallowRef<string> = shallowRef<string>('');
+
+   const goToChat = (question: string, id: string): void => {
+      if (isFirstQuestion && question.length > 0) router.push({ name: 'chat', params: { question, id } });
+
+      if (question.length === 0) errorMessage.value = 'Por favor, escribe un mensaje.';
+
+   };
+
+   return { question, errorMessage, goToChat };
 }

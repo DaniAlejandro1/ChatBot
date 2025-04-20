@@ -7,7 +7,7 @@
    </header>
 
    <!-- Aqui van los componentes relacionados al contenido principal -->
-   <main class="size-full flex flex-col justify-evenly items-center px-3">
+   <main class="h-[76%] w-full flex flex-col justify-evenly items-center px-3">
       <slot name="main"></slot>
    </main>
 

@@ -31,13 +31,13 @@ export const useChatBot = (router: Router, isFirstQuestion: boolean, addMessage:
    const goToChat = (question: string, id: string): void => {
       if (isFirstQuestion && question.length > 0) {
          router.push({ name: 'chat', params: { question, id } });
-      } else {
+      } else if (question.length > 0) {
          const response = 'Soy un robot 2';
          console.log(Number(id), question, response)
          addMessage(Number(id), question, response);
+      } else {
+         errorMessage.value = 'Por favor, escribe un mensaje.'
       }
-
-      if (question.length === 0) errorMessage.value = 'Por favor, escribe un mensaje.';
 
    };
 

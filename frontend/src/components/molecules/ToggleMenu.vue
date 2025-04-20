@@ -1,7 +1,15 @@
 <script setup lang="ts">
    import { useChatsStore } from '@/stores/chat';
+   import { computed } from 'vue';
+   import router from '@/router/route';
 
-   const chats = useChatsStore().chatHistory;
+   const goChat = (question: string, id: string) => {
+      router.push({ name: 'chat', params: { question, id } });
+   };
+
+   const store = useChatsStore();
+
+   const chats = computed(() => store.chatHistory);
 
    defineProps<{
       isSidebarOpen: boolean;
@@ -32,7 +40,7 @@
             <li
                v-for="(chat, id) in chats"
                :key="id"
-               class="flex flex-row p-2 items-center border-[1.5px] border-background-default bg-font-400 rounded-lg overflow-hidden hover:bg-primary-300 active:bg-primary-300"
+               class="flex flex-row p-2 items-center border-[1.5px] border-background-default bg-font-400 rounded-lg overflow-hidden"
             >
                <img
                   class="size-7"
@@ -40,10 +48,18 @@
                   alt="history icon"
                />
                <button
-                  class="block w-full text-left px-2 p-2 cursor-pointer"
+                  class="w-full text-left px-2 p-2 mr-2 cursor-pointer"
                   :aria-label="'Abrir ' + chat.title"
+                  @click="goChat(chat.title, chat.id.toString())"
                >
                   {{ chat.title }}
+               </button>
+               <button
+                  class="bg-red-500 active:bg-red-300 rounded-md w-fit text-left px-2 p-2 cursor-pointer"
+                  :aria-label="'Abrir ' + chat.title"
+                  @click="useChatsStore().deleteChatById(chat.id)"
+               >
+                  Borrar
                </button>
             </li>
          </ul>

@@ -21,8 +21,7 @@
       store.addMessageToChat(id, message, response);
    };
 
-   console.log('Props: ', props.id, props.question);
-   console.log('Chats', store.chats);
+   const chats = store.getChatMessages(Number(props.id));
 </script>
 
 <template>
@@ -32,9 +31,25 @@
       </template>
 
       <template #main>
-         <article class="size-full flex flex-col gap-2 bg-amber-200">
-            <p>{{ primaryQuestion }}</p>
-            <p>{{ response }}</p>
+         <article
+            class="size-full flex flex-col py-2 bg-gray-50 gap-2 overflow-y-auto box-border h-full"
+         >
+            <div v-for="chat in chats" :key="chat.id" class="flex flex-col gap-3 p-4">
+               <div class="w-full h-fit flex justify-end items-center">
+                  <p
+                     class="body-1 font-semibold text-right p-3 bg-primary-200 rounded-t-2xl rounded-bl-2xl"
+                  >
+                     {{ chat.question }}
+                  </p>
+               </div>
+               <div class="w-full h-fit flex justify-start items-center">
+                  <p
+                     class="body-1 font-semibold text-right p-3 bg-gray-300 rounded-t-2xl rounded-br-2xl"
+                  >
+                     {{ chat.response }}
+                  </p>
+               </div>
+            </div>
          </article>
       </template>
 

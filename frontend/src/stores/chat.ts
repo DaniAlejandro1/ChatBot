@@ -11,7 +11,11 @@ export const useChatsStore = defineStore('chats', {
 
    actions: {
       addChat(chat: ChatMessage): void {
-         this.chats.push(chat)
+         const exists = this.chats.some(c => c.id === chat.id); // Verifica si el id ya existe
+         if (!exists) {
+            this.chats.push(chat);
+            localStorage.setItem('chats', JSON.stringify(this.chats));
+         }
       },
 
       addMessageToChat(chatId: number, question: string, response: string): void {
@@ -21,13 +25,22 @@ export const useChatsStore = defineStore('chats', {
                chat.message = [];
             }
             chat.message.push({ question, response } as Comunication);
+            localStorage.setItem('chats', JSON.stringify(this.chats));
          }
       },
 
+      deleteChatById(chatId: number): void {
+         this.chats = this.chats.filter(chat => chat.id !== chatId);
+         localStorage.setItem('chats', JSON.stringify(this.chats));
+      },
    },
 
    getters: {
       chatHistory: (state) => state.chats,
       lengthChats: (state) => state.chats.length,
+      getChatMessages: (state) => (chatId: number) => {
+         const chat = state.chats.find(c => c.id === chatId);
+         return chat ? chat.message : [];
+      },
    }
 })

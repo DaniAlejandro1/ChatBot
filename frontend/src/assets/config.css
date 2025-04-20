@@ -23,8 +23,7 @@
    --color-brand-800: oklch(58.97% 0 0);
 
    --font-roboto: 'Roboto', Inter, Avenir, Helvetica, Arial, sans-serif;
-   --font-roboto-condensed:
-      'Roboto Condensed', Inter, Avenir, Helvetica, Arial, sans-serif;
+   --font-roboto-condensed: 'Roboto Condensed', Inter, Avenir, Helvetica, Arial, sans-serif;
 
    --text-header-1: 2rem;
    --text-header-2: 1.5rem;

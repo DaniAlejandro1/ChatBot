@@ -15,6 +15,10 @@
       message: [],
    });
 
+   const addMessage = (id: number, message: string, response: string): void => {
+      store.addMessageToChat(id, message, response);
+   };
+
    console.log('Props: ', props.id, props.question);
    console.log('Chats', store.chats);
 </script>
@@ -33,7 +37,7 @@
       </template>
 
       <template #footer>
-         <AppFooter :is-first-question="false" :id="id" />
+         <AppFooter :is-first-question="false" :id="id" :addMessage="addMessage" />
       </template>
    </MainLayout>
 </template>

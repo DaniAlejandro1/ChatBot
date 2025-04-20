@@ -6,6 +6,7 @@ export type Topic = {
 
 
 export type Comunication = {
+   id?: number;
    question: string;
    response: string;
 }
@@ -15,3 +16,5 @@ export type ChatMessage = {
    title: string;
    message: Comunication[]
 }
+
+export type AddMessageFunction = (id: number, question: string, response: string) => void;

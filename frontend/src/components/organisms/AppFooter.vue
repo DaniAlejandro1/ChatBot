@@ -3,8 +3,17 @@
    import { useChatBot } from '@/composables/useChatBot';
    import { watch } from 'vue';
 
-   const props = defineProps<{ isFirstQuestion: boolean; id: string }>();
-   const { errorMessage, goToChat, question } = useChatBot(router, props.isFirstQuestion);
+   const props = defineProps<{
+      isFirstQuestion: boolean;
+      id: string;
+      addMessage?: (id: number, message: string, response: string) => void;
+   }>();
+
+   const { errorMessage, goToChat, question } = useChatBot(
+      router,
+      props.isFirstQuestion,
+      props.addMessage || (() => {})
+   );
 
    watch(question, () => {
       if (question.value.length > 0) {

@@ -14,8 +14,13 @@ export const useChatsStore = defineStore('chats', {
       },
 
       addMessageToChat(chatId: number, question: string, response: string): void {
-         const chat = this.chats.find(c => c.id === chatId)
-         if (chat) chat.message.push({ question, response } as Comunication)
+         const chat = this.chats.find(c => c.id === chatId);
+         if (chat) {
+            if (!Array.isArray(chat.message)) {
+               chat.message = [];
+            }
+            chat.message.push({ question, response } as Comunication);
+         }
       },
 
    },

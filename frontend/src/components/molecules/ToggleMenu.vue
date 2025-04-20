@@ -1,14 +1,12 @@
 <script setup lang="ts">
+   import { useChatsStore } from '@/stores/chat';
+
+   const chats = useChatsStore().chatHistory;
+
    defineProps<{
       isSidebarOpen: boolean;
       toggleSidebar: () => void;
    }>();
-
-   const chats: string[] = [
-      'Chat 1, no ando creativo',
-      'Chat 2, no ando creativo',
-      'Chat 3, no ando creativo',
-   ];
 </script>
 
 <template>
@@ -32,8 +30,8 @@
             class="size-full flex flex-col gap-3 p-4 body-1 text-background-default overflow-y-auto"
          >
             <li
-               v-for="(chat, index) in chats"
-               :key="index"
+               v-for="(chat, id) in chats"
+               :key="id"
                class="flex flex-row p-2 items-center border-[1.5px] border-background-default bg-font-400 rounded-lg overflow-hidden hover:bg-primary-300 active:bg-primary-300"
             >
                <img
@@ -43,9 +41,9 @@
                />
                <button
                   class="block w-full text-left px-2 p-2 cursor-pointer"
-                  :aria-label="'Abrir ' + chat"
+                  :aria-label="'Abrir ' + chat.title"
                >
-                  {{ chat }}
+                  {{ chat.title }}
                </button>
             </li>
          </ul>

@@ -1,4 +1,5 @@
 import { TOPIC, TOPIC_DESCRIPTION } from '@/utils/enums';
+import { AddMessageFunction } from '@/utils/types';
 import { computed, shallowRef, ShallowRef } from 'vue';
 import { Router } from 'vue-router';
 
@@ -21,12 +22,20 @@ export const useTopicQuestion = (question: string) => {
    return { primaryQuestion, response };
 }
 
-export const useChatBot = (router: Router, isFirstQuestion: boolean) => {
+
+
+export const useChatBot = (router: Router, isFirstQuestion: boolean, addMessage: AddMessageFunction) => {
    const question: ShallowRef<string> = shallowRef<string>('');
    const errorMessage: ShallowRef<string> = shallowRef<string>('');
 
    const goToChat = (question: string, id: string): void => {
-      if (isFirstQuestion && question.length > 0) router.push({ name: 'chat', params: { question, id } });
+      if (isFirstQuestion && question.length > 0) {
+         router.push({ name: 'chat', params: { question, id } });
+      } else {
+         const response = 'Soy un robot 2';
+         console.log(Number(id), question, response)
+         addMessage(Number(id), question, response);
+      }
 
       if (question.length === 0) errorMessage.value = 'Por favor, escribe un mensaje.';
 

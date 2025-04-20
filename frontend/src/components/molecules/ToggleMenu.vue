@@ -1,5 +1,5 @@
 <script setup lang="ts">
-   const props = defineProps<{
+   defineProps<{
       isSidebarOpen: boolean;
       toggleSidebar: () => void;
    }>();
@@ -13,7 +13,7 @@
 
 <template>
    <aside
-      v-if="props.isSidebarOpen"
+      v-if="isSidebarOpen"
       class="fixed top-0 left-0 h-full w-full xl:w-2/5 bg-font-600"
       aria-label="Sidebar de historial de chats"
    >

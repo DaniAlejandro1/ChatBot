@@ -1,13 +1,9 @@
 <script setup lang="ts">
    import NewChatButton from '@/components/atoms/NewChatButton.vue';
    import ToggleMenu from '@/components/molecules/ToggleMenu.vue';
-   import { ShallowRef, shallowRef } from 'vue';
+   import { useToggleMenu } from '@/composable/useToggleMenu';
 
-   const isSidebarOpen: ShallowRef<boolean> = shallowRef(false);
-
-   const toggleSidebar = (): void => {
-      isSidebarOpen.value = !isSidebarOpen.value;
-   };
+   const { isSidebarOpen, toggleSidebar } = useToggleMenu();
 </script>
 
 <template>

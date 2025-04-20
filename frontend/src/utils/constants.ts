@@ -1,25 +1,25 @@
-import type { Topic } from '@/utils/type';
+import type { Topic } from '@/utils/types';
+import { TOPIC, TOPIC_IMG, TOPIC_DESCRIPTION } from '@/utils/enums';
 
-export const topyc: Topic[] = [
+export const TOPIC_CARD: Topic[] = [
    {
-      img: 'cloud.png',
-      title: 'Clima',
-      description: 'Quiero conocer el clima actual en mi ubicación (Temuco, Chile).',
+      img: TOPIC_IMG.CLIMA,
+      title: TOPIC.CLIMA,
+      description: TOPIC_DESCRIPTION.CLIMA,
    },
    {
-      img: 'money-calculator.png',
-      title: 'Valor del UF',
-      description: 'Quiero saber el valor actual de la UF en pesos chilenos.',
+      img: TOPIC_IMG.UF,
+      title: TOPIC.UF,
+      description: TOPIC_DESCRIPTION.UF,
    },
    {
-      img: 'money-alt.png',
-      title: 'Valor del dólar',
-      description: 'Quiero saber el valor actual del dólar en pesos chilenos.',
+      img: TOPIC_IMG.DOLAR,
+      title: TOPIC.DOLAR,
+      description: TOPIC_DESCRIPTION.DOLAR,
    },
    {
-      img: 'news.png',
-      title: 'Noticias del dia',
-      description:
-         'Quiero saber las noticias sobre mi rubro de celulosa.',
+      img: TOPIC_IMG.NOTICIAS,
+      title: TOPIC.NOTICIAS,
+      description: TOPIC_DESCRIPTION.NOTICIAS,
    },
 ];

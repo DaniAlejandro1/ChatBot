@@ -1,3 +1,8 @@
+import cloudIcon from '@/assets/icon/cloud.png';
+import moneyCalcIcon from '@/assets/icon/money-calculator.png';
+import moneyIcon from '@/assets/icon/money-alt.png';
+import newsIcon from '@/assets/icon/news.png';
+
 export enum TOPIC {
    CLIMA = 'Clima',
    UF = 'Valor del UF',
@@ -18,3 +23,10 @@ export enum TOPIC_DESCRIPTION {
    DOLAR = 'Quiero saber el valor actual del dólar en pesos chilenos.',
    NOTICIAS = 'Quiero saber las noticias sobre mi rubro de celulosa.',
 }
+
+export const IMAGE_MAP: Record<string, string> = {
+   'cloud.png': cloudIcon,
+   'money-calculator.png': moneyCalcIcon,
+   'money-alt.png': moneyIcon,
+   'news.png': newsIcon,
+};

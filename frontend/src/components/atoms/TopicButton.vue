@@ -1,6 +1,6 @@
 <script setup lang="ts">
    import type { Topic } from '@/utils/types';
-   import { useImagePath } from '@/composable/useImg';
+   import { useImagePath } from '@/composables/useImg';
 
    const props = defineProps<Topic>();
 </script>

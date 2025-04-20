@@ -2,7 +2,7 @@
    import MainLayout from '@/page/layout/MainLayout.vue';
    import AppFooter from '@/components/organisms/AppFooter.vue';
    import AppHeader from '@/components/organisms/AppHeader.vue';
-   import { useTopicQuestion } from '@/composable/useChatBot';
+   import { useTopicQuestion } from '@/composables/useChatBot';
 
    const props = defineProps<{ question: string }>();
    const primaryQuestion = useTopicQuestion(props.question);

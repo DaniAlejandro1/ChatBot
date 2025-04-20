@@ -1,7 +1,7 @@
 <script setup lang="ts">
    import NewChatButton from '@/components/atoms/NewChatButton.vue';
    import ToggleMenu from '@/components/molecules/ToggleMenu.vue';
-   import { useToggleMenu } from '@/composable/useToggleMenu';
+   import { useToggleMenu } from '@/composables/useToggleMenu';
 
    const { isSidebarOpen, toggleSidebar } = useToggleMenu();
 </script>

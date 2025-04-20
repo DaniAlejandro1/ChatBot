@@ -5,8 +5,8 @@ import HomeView from '@/page/HomeView.vue';
 
 const routes = [
    { path: '/', redirect: '/home' },
-   { path: '/home', component: HomeView },
-   { path: '/chat/:question', name: 'chat', component: ChatView, props: true, },
+   { path: '/home', name: 'home', component: HomeView },
+   { path: '/chat/:question', name: 'chat', component: ChatView, props: true },
 ];
 
 const router = createRouter({

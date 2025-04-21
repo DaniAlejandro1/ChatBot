@@ -11,5 +11,6 @@ async def clima():
     try:
         data = await get_clima(ciudad)
         return ResponseFormat.success_clima(data)
-    except Exception:
+    except Exception as e:
+        print(f"Error al obtener el clima: {e}")
         return ResponseFormat.error_personalizado()

@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import type { ChatMessage, Comunication } from '@/utils/types'
 
 export const useChatsStore = defineStore('chats', {
-   state: () => {
+   state: (): { chats: ChatMessage[] } => {
       const savedChats = localStorage.getItem('chats');
       return {
          chats: savedChats ? (JSON.parse(savedChats) as ChatMessage[]) : [],
@@ -11,7 +11,7 @@ export const useChatsStore = defineStore('chats', {
 
    actions: {
       addChat(chat: ChatMessage): void {
-         const exists = this.chats.some(c => c.id === chat.id); // Verifica si el id ya existe
+         const exists = this.chats.some((c: ChatMessage) => c.id === chat.id);
          if (!exists) {
             this.chats.push(chat);
             localStorage.setItem('chats', JSON.stringify(this.chats));
@@ -19,7 +19,7 @@ export const useChatsStore = defineStore('chats', {
       },
 
       addMessageToChat(chatId: number, question: string, response: string): void {
-         const chat = this.chats.find(c => c.id === chatId);
+         const chat = this.chats.find((c: ChatMessage) => c.id === chatId);
          if (chat) {
             if (!Array.isArray(chat.message)) {
                chat.message = [];
@@ -30,17 +30,17 @@ export const useChatsStore = defineStore('chats', {
       },
 
       deleteChatById(chatId: number): void {
-         this.chats = this.chats.filter(chat => chat.id !== chatId);
+         this.chats = this.chats.filter((chat: ChatMessage) => chat.id !== chatId);
          localStorage.setItem('chats', JSON.stringify(this.chats));
       },
    },
 
    getters: {
-      chatHistory: (state) => state.chats,
-      lengthChats: (state) => state.chats.length,
-      getChatMessages: (state) => (chatId: number) => {
-         const chat = state.chats.find(c => c.id === chatId);
+      chatHistory: (state): ChatMessage[] => state.chats,
+      lengthChats: (state): number => state.chats.length,
+      getChatMessages: (state) => (chatId: number): Comunication[] => {
+         const chat = state.chats.find((c: ChatMessage) => c.id === chatId);
          return chat ? chat.message : [];
       },
    }
-})
+});

@@ -8,6 +8,7 @@
    const store = useChatsStore();
    const props = defineProps<{ question: string; id: string }>();
    const { primaryQuestion, response } = useTopicQuestion(props.question);
+   const chats = store.getChatMessages(Number(props.id));
 
    store.addChat({
       id: Number(props.id),
@@ -15,13 +16,11 @@
       message: [],
    });
 
-   store.addMessageToChat(Number(props.id), props.question, response.value);
-
    const addMessage = (id: number, message: string, response: string): void => {
-      store.addMessageToChat(id, message, response);
+      store.addMessageToChat(id, message, response); //NICO: Cambiar a la respuesta del bot
    };
 
-   const chats = store.getChatMessages(Number(props.id));
+   addMessage(Number(props.id), props.question, response.value);
 </script>
 
 <template>

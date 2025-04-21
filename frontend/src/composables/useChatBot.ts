@@ -1,11 +1,12 @@
 import { TOPIC, TOPIC_DESCRIPTION } from '@/utils/enums';
-import { AddMessageFunction } from '@/utils/types';
-import { computed, shallowRef, ShallowRef } from 'vue';
+import { AddMessageFunction, UseChatBot, UseTopicQuestion } from '@/utils/types';
+import { computed, ComputedRef, shallowRef, ShallowRef } from 'vue';
 import { Router } from 'vue-router';
 
-export const useTopicQuestion = (question: string) => {
+
+export const useTopicQuestion = (question: string): UseTopicQuestion => {
    const response: ShallowRef<string> = shallowRef<string>('Soy un robot');
-   const primaryQuestion = computed(() => {
+   const primaryQuestion: ComputedRef<string> = computed(() => {
       if (question === TOPIC.CLIMA) {
          return TOPIC_DESCRIPTION.CLIMA;
       } else if (question === TOPIC.DOLAR) {
@@ -23,8 +24,7 @@ export const useTopicQuestion = (question: string) => {
 }
 
 
-
-export const useChatBot = (router: Router, isFirstQuestion: boolean, addMessage: AddMessageFunction) => {
+export const useChatBot = (router: Router, isFirstQuestion: boolean, addMessage: AddMessageFunction): UseChatBot => {
    const question: ShallowRef<string> = shallowRef<string>('');
    const errorMessage: ShallowRef<string> = shallowRef<string>('');
 
@@ -32,8 +32,7 @@ export const useChatBot = (router: Router, isFirstQuestion: boolean, addMessage:
       if (isFirstQuestion && question.length > 0) {
          router.push({ name: 'chat', params: { question, id } });
       } else if (question.length > 0) {
-         const response = 'Soy un robot 2';
-         console.log(Number(id), question, response)
+         const response: string = 'Soy un robot 2';
          addMessage(Number(id), question, response);
       } else {
          errorMessage.value = 'Por favor, escribe un mensaje.'

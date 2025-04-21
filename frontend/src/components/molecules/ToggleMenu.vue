@@ -1,20 +1,17 @@
 <script setup lang="ts">
    import { useChatsStore } from '@/stores/chat';
+   import { ToggleMenu } from '@/utils/types';
    import { computed } from 'vue';
    import router from '@/router/route';
 
-   const goChat = (question: string, id: string) => {
+   defineProps<ToggleMenu>();
+
+   const goChat = (question: string, id: string): void => {
       router.push({ name: 'chat', params: { question, id } });
    };
 
    const store = useChatsStore();
-
    const chats = computed(() => store.chatHistory);
-
-   defineProps<{
-      isSidebarOpen: boolean;
-      toggleSidebar: () => void;
-   }>();
 </script>
 
 <template>

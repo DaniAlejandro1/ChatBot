@@ -11,7 +11,7 @@ export const useChatsStore = defineStore('chats', {
 
    actions: {
       addChat(chat: ChatMessage): void {
-         const exists = this.chats.some(c => c.id === chat.id); // Verifica si el id ya existe
+         const exists = this.chats.some(c => c.id === chat.id);
          if (!exists) {
             this.chats.push(chat);
             localStorage.setItem('chats', JSON.stringify(this.chats));

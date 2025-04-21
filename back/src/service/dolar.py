@@ -7,6 +7,6 @@ async def get_valor_dolar():
         response.raise_for_status()
         data = response.json()
         valor = data["response"]["currency"]["rate_per_usd"]
-        valor_redondeado = round(float(valor))
+        valor_redondeado = str(round(float(valor)))
         mensaje = f"A día de hoy el valor del dolar ha alcanzado los {valor_redondeado} pesos"
-        return mensaje
+        return valor_redondeado

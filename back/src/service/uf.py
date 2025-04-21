@@ -17,9 +17,9 @@ async def get_valor_uf():
         response = await client.get(url)
         response.raise_for_status()
         valor_uf = response.json()
-        valor = valor_uf["UFs"][0]["Valor"]
+        valor = str(valor_uf["UFs"][0]["Valor"])
         mensaje = f"A día de hoy el valor de la UF ha alcanzado el valor de {valor} pesos"
-        return mensaje
+        return valor
     
     
 

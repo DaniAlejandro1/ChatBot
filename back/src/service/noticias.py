@@ -1,17 +1,27 @@
 import httpx
 import os
-from dotenv import load_dotenv
+import random
 from src.utils.response_format import ResponseFormat
 
-load_dotenv()
+
 
 API_KEY = os.getenv("NOTICIAS_API_KEY")
-URL = f"https://newsapi.org/v2/top-headlines?apiKey={API_KEY}&language=en&sortBy=publishedAt"
+URL = f"https://newsapi.org/v2/top-headlines/sources?language=es&apiKey={API_KEY}"
 
 async def get_noticias_recientes():
+   
+
     async with httpx.AsyncClient() as client:
         response = await client.get(URL)
         response.raise_for_status()
         data = response.json()
-        title = data["articles"][0]["title"]
-        return title
+        if data["status"] == "ok" and data["sources"]:
+            articulo = random.choice(data["sources"])
+            print(articulo["description"])
+            return {
+                articulo["description"],
+                #"nombre": articulo["name"],
+                #"url": articulo["url"],
+            }
+        else:
+            return f"error", "No se encontraron noticias",str(response.json())

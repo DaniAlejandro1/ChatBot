@@ -4,9 +4,6 @@ from src.service.chat import chat
 router = APIRouter()
 
 @router.get("/chat")
-async def hola():
-    return  chat(frase="dolar")
-
-@router.post("/name/{name}")
-async def saludo(name):
-    return "Hola " + name
+async def hola(topico : str):
+    frase = await chat(frase=topico)
+    return  frase

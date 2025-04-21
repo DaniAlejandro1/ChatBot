@@ -23,4 +23,4 @@ async def get_clima(ciudad: str ):
             temperatura = data["current"]["temp_c"]
             respuesta = f"{round(float(temperatura))} °C"
             
-            return {respuesta}
+            return respuesta

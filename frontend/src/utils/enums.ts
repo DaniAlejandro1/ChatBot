@@ -21,7 +21,7 @@ export enum TOPIC_DESCRIPTION {
    CLIMA = 'Quiero conocer el clima actual en mi ubicación (Temuco, Chile).',
    UF = 'Quiero saber el valor actual de la UF en pesos chilenos.',
    DOLAR = 'Quiero saber el valor actual del dólar en pesos chilenos.',
-   NOTICIAS = 'Quiero saber las noticias sobre mi rubro de celulosa.',
+   NOTICIAS = 'Quiero conocer las noticias más relevantes del día.',
 }
 
 export const IMAGE_MAP: Record<string, string> = {

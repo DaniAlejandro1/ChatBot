@@ -2,13 +2,15 @@
 
 ## Para iniciar el back
 
-``
-cd .\back\
-``
+*Entrar en el directorio*
+
+```
+  cd .\back\
+```
 *Importante una vez dentro del directorio 'back' crear primero un entorno de desarrollo*
-``
+```
   python -m venv .venv
-``
+```
 
 *Activar el entorno de desarrollo*
 ```
@@ -17,10 +19,9 @@ cd .\back\
 
 *Instalar los paquetes necesarios para el proyecto*
 
-``
+```
   pip install -r requirements.txt
-``
-
+```
 
 *Correr la app*
 ```

@@ -1,0 +1,44 @@
+@layer components {
+   .header-1 {
+      color: var(--color-font-500);
+      font-size: var(--text-header-1);
+      font-family: var(--font-roboto-condensed);
+      font-weight: 600;
+      line-height: normal;
+   }
+   .header-2 {
+      color: var(--color-font-500);
+      font-size: var(--text-header-2);
+      font-family: var(--font-roboto-condensed);
+      font-weight: 500;
+      line-height: normal;
+   }
+   .header-3 {
+      font-size: var(--text-header-3);
+      font-family: var(--font-roboto-condensed);
+      font-weight: 600;
+      line-height: normal;
+   }
+
+   .body-1 {
+      color: var(--color-font-500);
+      font-size: var(--text-body-1);
+      font-family: var(--font-roboto);
+      font-weight: 500;
+      line-height: normal;
+   }
+   .body-2 {
+      color: var(--color-font-500);
+      font-size: var(--text-body-2);
+      font-family: var(--font-roboto);
+      font-weight: 500;
+      line-height: normal;
+   }
+   .body-3 {
+      color: var(--color-font-500);
+      font-size: var(--text-body-3);
+      font-family: var(--font-roboto);
+      font-weight: 500;
+      line-height: normal;
+   }
+}

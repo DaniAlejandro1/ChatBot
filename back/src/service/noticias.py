@@ -17,11 +17,10 @@ async def get_noticias_recientes():
         data = response.json()
         if data["status"] == "ok" and data["sources"]:
             articulo = random.choice(data["sources"])
-            print(articulo["description"])
-            return {
-                articulo["description"],
+            
+            return str(articulo["description"])
                 #"nombre": articulo["name"],
                 #"url": articulo["url"],
-            }
+            
         else:
             return f"error", "No se encontraron noticias",str(response.json())

@@ -49,6 +49,7 @@ datos_entrenamiento = [
     ("top 10 noticias", "noticias"),
     ("noticias actuales", "noticias"),
     ("quiero una noticia", "noticias"),  
+    ("noticia", "noticias"),
     ("noticia", "noticias")
 ]
 
@@ -80,7 +81,7 @@ def detectar_intencion(frase, umbral_confianza=0.5):
 def parafrasear_texto(topico: str, valor: str) -> str:
     # Inicializar el cliente de Cohere con tu clave de API
     co = cohere.Client('z0U0usZ1wAOKCGr5JN83d9neMj4YA4KEHLeZ5OUX')  # Reemplaza 'TU_API_KEY' con tu clave real
-    print(topico,valor)
+    print("topico",topico,", valor",valor)
     # Crear el mensaje para el modelo
     mensaje = f"""Como usuario te estoy preguntando esto {topico} y necesito que uses esto para responderme {valor}. Con el siguiente formato
                 - "El precio actual del dólar es de 800 pesos."

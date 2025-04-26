@@ -2,7 +2,7 @@ import uvicorn
 from src.controller.api_router import api_router
 from fastapi import FastAPI
 from config import settings as cf
-
+from fastapi.middleware.cors import CORSMiddleware
 
 def create_app() -> FastAPI:
     app = FastAPI(
@@ -16,8 +16,8 @@ def create_app() -> FastAPI:
             CORSMiddleware,
             allow_origins=[str(origin) for origin in cf.BACKEND_CORS_ORIGINS],
             allow_credentials=True,
-            allow_methods=[""],
-            allow_headers=[""],
+            allow_methods=["*"],
+            allow_headers=["*"],
         )
 
     # Include the routers

@@ -19,21 +19,13 @@ async def chat(frase):
     funcion = acciones.get(intention, acciones["desconocida"])
     print(f"Intención detectada: {intention}")
     
-    if callable(funcion):
-        # Obtenemos el resultado (manejando tanto sync como async)
-        if asyncio.iscoroutinefunction(funcion):
-            resultado = await funcion()
-        elif asyncio.iscoroutinefunction(funcion.__call__):
-            resultado = await funcion()
-        else:
-            resultado = funcion()  # Función síncrona
-        
-        # Aplicamos parafrasear_texto solo si no es "noticias"
-        if intention != "noticias":
-            if asyncio.iscoroutinefunction(parafrasear_texto):
-                return await parafrasear_texto(frase, resultado)
-            return parafrasear_texto(frase, resultado)
-        
-        return resultado
+    if intention == "desconocida":
+        return funcion()
     
-    return funcion
+    resultado = await funcion()
+    print(f"Resultado de la función: {resultado}")
+    if intention != "noticias":
+        return parafrasear_texto(frase, resultado)
+    
+    return resultado
+    

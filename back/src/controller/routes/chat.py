@@ -6,4 +6,5 @@ router = APIRouter()
 @router.get("/chat")
 async def hola(topico : str):
     frase = await chat(frase=topico)
+    print("frase", frase)
     return  frase

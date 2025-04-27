@@ -33,6 +33,10 @@ export const useChatsStore = defineStore('chats', {
          this.chats = this.chats.filter(chat => chat.id !== chatId);
          localStorage.setItem('chats', JSON.stringify(this.chats));
       },
+
+      isPresentChat(chatId: number): boolean {
+         return this.chats.some(chat => chat.id === chatId);
+      }
    },
 
    getters: {

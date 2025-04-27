@@ -6,25 +6,26 @@
    import { useChatsStore } from '@/stores/chat';
    import { ref, watch, nextTick } from 'vue';
 
-
-
    const store = useChatsStore();
    const props = defineProps<{
-       question: string; 
-       id: string 
-      }>();
+      question: string;
+      id: string;
+   }>();
 
    const { primaryQuestion, response } = await useTopicQuestion(props.question);
 
    const chatContainer = ref<HTMLElement | null>(null);
 
-   store.addChat({
-      id: Number(props.id),
-      title: primaryQuestion.value,
-      message: [],
-   });
+   // Se valida que la ID no exista previamente antes de crear el chat
+   if (!store.isPresentChat(Number.parseInt(props.id))) {
+      store.addChat({
+         id: Number(props.id),
+         title: primaryQuestion.value,
+         message: [],
+      });
 
-   store.addMessageToChat(Number(props.id), props.question, response);
+      store.addMessageToChat(Number(props.id), props.question, response);
+   }
 
    const addMessage = (id: number, message: string, response: string): void => {
       store.addMessageToChat(id, message, response);
@@ -32,12 +33,16 @@
 
    const chats = store.getChatMessages(Number(props.id));
 
-   watch(chats, async () => {
-   await nextTick(); // espera que el DOM se actualice
-   if (chatContainer.value) {
-      chatContainer.value.scrollTop = chatContainer.value.scrollHeight;
-   }
-   }, { deep: true });
+   watch(
+      chats,
+      async () => {
+         await nextTick();
+         if (chatContainer.value) {
+            chatContainer.value.scrollTop = chatContainer.value.scrollHeight;
+         }
+      },
+      { deep: true }
+   );
 </script>
 
 <template>
@@ -47,8 +52,6 @@
       </template>
 
       <template #main>
-         <!-- ref="chatContainer" - Se usa en watch para saber que el DOM se ha actualizado y puede realizar-->
-
          <article
             ref="chatContainer"
             class="size-full flex flex-col py-2 bg-gray-50 gap-2 overflow-y-auto box-border h-full"
@@ -76,5 +79,5 @@
          <AppFooter :is-first-question="false" :id="id" :addMessage="addMessage" />
       </template>
    </MainLayout>
-
 </template>
+

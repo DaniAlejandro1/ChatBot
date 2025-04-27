@@ -80,18 +80,29 @@ def detectar_intencion(frase, umbral_confianza=0.5):
 
 def parafrasear_texto(topico: str, valor: str) -> str:
     # Inicializar el cliente de Cohere con tu clave de API
-    co = cohere.Client('z0U0usZ1wAOKCGr5JN83d9neMj4YA4KEHLeZ5OUX')  # Reemplaza 'TU_API_KEY' con tu clave real
+    co = cohere.ClientV2('z0U0usZ1wAOKCGr5JN83d9neMj4YA4KEHLeZ5OUX')  # Reemplaza 'TU_API_KEY' con tu clave real
+    
     print("topico",topico,", valor",valor)
     # Crear el mensaje para el modelo
-    mensaje = f"""Como usuario te estoy preguntando esto {topico} y necesito que uses esto para responderme {valor}. Con el siguiente formato
-                - "El precio actual del dólar es de 800 pesos."
-                - "Hoy la UF está valorada en 30.000 pesos."
-                """
+
+                
 
     # Llamar al modelo usando el endpoint de chat
     respuesta = co.chat(
-        message=mensaje,
-        model='command-r-plus',  # Modelo recomendado para tareas de generación
+        messages=
+        [
+            {
+            "role": "user",
+            "content": f"""
+            necesito que respondas a la pregunta: \"{topico}\", segun este valor: \"{valor}\" en 7 palabras como maximo,
+            no agregues informacion extra ni describas los valores, ten en cuenta que estamos en chile para responder, 
+            considera que eres un asistente virtual.
+            Si es dolar o UF puedes usar las palabras pesos, pesos chilenos.
+            Si es clima puedes usar las palabras grados, grados de temperatura, para responder.
+            """
+            }
+        ],
+        model='command-a-03-2025',  # Modelo recomendado para tareas de generación
         temperature=0.9,  # Controla la creatividad de la respuesta
         max_tokens=50,
         
@@ -99,4 +110,5 @@ def parafrasear_texto(topico: str, valor: str) -> str:
     )
 
     # Devolver el texto parafraseado
-    return respuesta.text
+    print("respuesta", respuesta.message.content[0].text)
+    return respuesta.message.content[0].text

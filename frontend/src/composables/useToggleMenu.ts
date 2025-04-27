@@ -10,5 +10,5 @@ export const useToggleMenu = () => {
    return {
       isSidebarOpen,
       toggleSidebar,
-   }
-}
+   };
+};

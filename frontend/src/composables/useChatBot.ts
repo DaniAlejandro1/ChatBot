@@ -19,22 +19,23 @@ export const useTopicQuestion = async (question: string) => {
    });
 
    const response = await getResponse(primaryQuestion.value);
-
-
    return { primaryQuestion, response };
-}
+};
 
 export async function getResponse(message: string): Promise<string> {
-   const response = await fetch(`http://localhost:8000/chat?topico=${encodeURIComponent(message)}`);
+   const response = await fetch(
+      `http://localhost:8000/chat?topico=${encodeURIComponent(message)}`
+   );
    const data = await response.json();
-   console.log('Post creado:', data);
-   console.log(data.type)
 
-   return data
-
+   return data;
 }
 
-export const useChatBot = (router: Router, isFirstQuestion: boolean, addMessage: AddMessageFunction) => {
+export const useChatBot = (
+   router: Router,
+   isFirstQuestion: boolean,
+   addMessage: AddMessageFunction
+) => {
    const question: ShallowRef<string> = shallowRef<string>('');
    const errorMessage: ShallowRef<string> = shallowRef<string>('');
 
@@ -43,14 +44,11 @@ export const useChatBot = (router: Router, isFirstQuestion: boolean, addMessage:
          router.push({ name: 'chat', params: { question, id } });
       } else if (question.length > 0) {
          const response = await getResponse(question);
-         console.log(Number(id), question, response)
          addMessage(Number(id), question, response);
-
       } else {
-         errorMessage.value = 'Por favor, escribe un mensaje.'
+         errorMessage.value = 'Por favor, escribe un mensaje.';
       }
-
    };
 
    return { question, errorMessage, goToChat };
-}
+};

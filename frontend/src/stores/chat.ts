@@ -1,5 +1,5 @@
-import { defineStore } from 'pinia'
-import type { ChatMessage, Comunication } from '@/utils/types'
+import { defineStore } from 'pinia';
+import type { ChatMessage, Comunication } from '@/utils/types';
 
 export const useChatsStore = defineStore('chats', {
    state: () => {
@@ -11,7 +11,7 @@ export const useChatsStore = defineStore('chats', {
 
    actions: {
       addChat(chat: ChatMessage): void {
-         const exists = this.chats.some(c => c.id === chat.id);
+         const exists = this.chats.some((c) => c.id === chat.id);
          if (!exists) {
             this.chats.push(chat);
             localStorage.setItem('chats', JSON.stringify(this.chats));
@@ -19,7 +19,7 @@ export const useChatsStore = defineStore('chats', {
       },
 
       addMessageToChat(chatId: number, question: string, response: string): void {
-         const chat = this.chats.find(c => c.id === chatId);
+         const chat = this.chats.find((c) => c.id === chatId);
          if (chat) {
             if (!Array.isArray(chat.message)) {
                chat.message = [];
@@ -30,21 +30,21 @@ export const useChatsStore = defineStore('chats', {
       },
 
       deleteChatById(chatId: number): void {
-         this.chats = this.chats.filter(chat => chat.id !== chatId);
+         this.chats = this.chats.filter((chat) => chat.id !== chatId);
          localStorage.setItem('chats', JSON.stringify(this.chats));
       },
 
       isPresentChat(chatId: number): boolean {
-         return this.chats.some(chat => chat.id === chatId);
-      }
+         return this.chats.some((chat) => chat.id === chatId);
+      },
    },
 
    getters: {
       chatHistory: (state) => state.chats,
       lengthChats: (state) => state.chats.length,
       getChatMessages: (state) => (chatId: number) => {
-         const chat = state.chats.find(c => c.id === chatId);
+         const chat = state.chats.find((c) => c.id === chatId);
          return chat ? chat.message : [];
       },
-   }
-})
+   },
+});

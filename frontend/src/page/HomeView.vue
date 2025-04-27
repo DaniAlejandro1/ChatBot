@@ -7,7 +7,7 @@
    import router from '@/router/route';
    import { TOPIC_CARD } from '@/utils/constants';
 
-   const id = useChatsStore().lengthChats + 1;
+   const id = useChatsStore().lengthChats + 2;
 
    const goToChat = (question: string): void => {
       router.push({ name: 'chat', params: { question, id } });

@@ -4,6 +4,8 @@
    const goToHome = (): void => {
       router.push({ name: 'home' });
    };
+
+   
 </script>
 
 <template>

@@ -10,6 +10,11 @@ export type Comunication = {
    response: string;
 };
 
+export type Conversation = {
+   question: string;
+   response: string;
+}
+
 export type ChatMessage = {
    id: number;
    title: string;

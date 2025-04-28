@@ -1,16 +1,31 @@
 <script setup lang="ts">
    import MainLayout from '@/page/layout/MainLayout.vue';
-   import AppFooter from '@/components/organisms/AppFooter.vue';
    import AppHeader from '@/components/organisms/AppHeader.vue';
    import TopicButton from '@/components/atoms/TopicButton.vue';
    import { useChatsStore } from '@/stores/chat';
    import router from '@/router/route';
    import { TOPIC_CARD } from '@/utils/constants';
 
-   const id = useChatsStore().lengthChats + 2;
+   
+
+
+   
+  
+
+
+
 
    const goToChat = (question: string): void => {
-      router.push({ name: 'chat', params: { question, id } });
+      const id = useChatsStore().createConversation({
+      question: '',
+      response: '',
+   });
+
+      useChatsStore().setConversation(id, {
+         question: question,
+         response: '',
+      });
+      router.push({ name: 'chat', params: { index:id } });
    };
 </script>
 
@@ -40,13 +55,10 @@
                :title="item.title"
                :description="item.description"
                :img="item.img"
-               @click="goToChat(item.title)"
+               @click="goToChat(item.description)"
             />
          </section>
       </template>
 
-      <template #footer>
-         <AppFooter :is-first-question="true" :id="id.toString()" />
-      </template>
    </MainLayout>
 </template>

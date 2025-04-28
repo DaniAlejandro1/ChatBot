@@ -94,8 +94,8 @@ def parafrasear_texto(topico: str, valor: str) -> str:
             {
             "role": "user",
             "content": f"""
-            necesito que respondas a la pregunta: \"{topico}\", segun este valor: \"{valor}\" en 7 palabras como maximo,
-            no agregues informacion extra ni describas los valores, ten en cuenta que estamos en chile para responder, 
+            necesito que respondas a la pregunta: \"{topico}\", segun este valor: \"{valor}\" en 7 palabras como maximo y si el valor es un numero muestralo como numero,
+            no agregues informacion extra ni describas los valores, ten en cuenta que estamos en chile para responder, no uses conceptos como equivalente, ni conversiones, ni comparaciones,
             considera que eres un asistente virtual.
             Si es dolar o UF puedes usar las palabras pesos, pesos chilenos.
             Si es clima puedes usar las palabras grados, grados de temperatura, para responder.

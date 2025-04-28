@@ -4,6 +4,6 @@
 
 <template>
    <Suspense>
-      <RouterView />
+      <RouterView :key="String($route.params.index)" />
    </Suspense>
 </template>

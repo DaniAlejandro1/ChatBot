@@ -1,50 +1,57 @@
 import { defineStore } from 'pinia';
-import type { ChatMessage, Comunication } from '@/utils/types';
+import type {Conversation} from '@/utils/types';
+import { ref } from 'vue';
 
-export const useChatsStore = defineStore('chats', {
-   state: () => {
-      const savedChats = localStorage.getItem('chats');
-      return {
-         chats: savedChats ? (JSON.parse(savedChats) as ChatMessage[]) : [],
-      };
-   },
 
-   actions: {
-      addChat(chat: ChatMessage): void {
-         const exists = this.chats.some((c) => c.id === chat.id);
-         if (!exists) {
-            this.chats.push(chat);
-            localStorage.setItem('chats', JSON.stringify(this.chats));
-         }
-      },
+export const useChatsStore = defineStore('chats', () =>{
+   const conversations = ref<Array<Conversation[]>>([]);
 
-      addMessageToChat(chatId: number, question: string, response: string): void {
-         const chat = this.chats.find((c) => c.id === chatId);
-         if (chat) {
-            if (!Array.isArray(chat.message)) {
-               chat.message = [];
-            }
-            chat.message.push({ question, response } as Comunication);
-            localStorage.setItem('chats', JSON.stringify(this.chats));
-         }
-      },
+   function addConversation(conversacion: Conversation[]){
+      conversations.value.push(conversacion)
+   }
 
-      deleteChatById(chatId: number): void {
-         this.chats = this.chats.filter((chat) => chat.id !== chatId);
-         localStorage.setItem('chats', JSON.stringify(this.chats));
-      },
+   function createConversation(conversacion: Conversation){
+      conversations.value.push([conversacion])
+      return conversations.value.length - 1
+   }
 
-      isPresentChat(chatId: number): boolean {
-         return this.chats.some((chat) => chat.id === chatId);
-      },
-   },
+   function setConversation(index: number, conversation: Conversation) {
+      for (let i = 0; i < conversations.value[index].length; i++) {
+        if (conversations.value[index][i].question === '') {
+          conversations.value[index][i] = {
+            ...conversations.value[index][i],
+            question: conversation.question,
+          };
+          return;
+        }
+      }
+      conversations.value[index].push(conversation);
+    }
+    
 
-   getters: {
-      chatHistory: (state) => state.chats,
-      lengthChats: (state) => state.chats.length,
-      getChatMessages: (state) => (chatId: number) => {
-         const chat = state.chats.find((c) => c.id === chatId);
-         return chat ? chat.message : [];
-      },
-   },
+   function setResponse(index: number, response: string) {
+      for (let i = 0; i < conversations.value[index].length; i++) {
+        if (conversations.value[index][i].response === '') {
+          conversations.value[index][i] = {
+            ...conversations.value[index][i],
+            response: response,
+          };
+          return;
+        }
+      }
+   }
+   
+   function removeConversation(index: number){
+      conversations.value.splice(index, 1)
+   }
+
+   function getConversation(index: number){
+      return conversations.value[index]
+   }
+
+
+   function getAllConversations(){
+      return conversations.value
+   }
+   return {addConversation,createConversation, removeConversation, getConversation,setConversation, setResponse, getAllConversations}
 });

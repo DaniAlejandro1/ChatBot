@@ -6,7 +6,7 @@ import HomeView from '@/page/HomeView.vue';
 const routes = [
    { path: '/', redirect: '/home' },
    { path: '/home', name: 'home', component: HomeView },
-   { path: '/chat/:question/:id', name: 'chat', component: ChatView, props: true },
+   { path: '/chat/:index', name: 'chat', component: ChatView},
 ];
 
 const router = createRouter({

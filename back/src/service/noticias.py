@@ -18,7 +18,7 @@ async def get_noticias_recientes():
         if data["status"] == "ok" and data["sources"]:
             articulo = random.choice(data["sources"])
             
-            return str(articulo["description"])
+            return f'{articulo["description"]}'
                 #"nombre": articulo["name"],
                 #"url": articulo["url"],
             

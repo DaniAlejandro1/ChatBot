@@ -66,7 +66,8 @@ modelo = make_pipeline(CountVectorizer(), MultinomialNB())
 modelo.fit(frases_normalizadas, etiquetas)
 
 # Funcion para detectar intención
-def detectar_intencion(frase, umbral_confianza=0.5):
+def detectar_intencion(frase):
+    umbral_confianza=0.5
     frase_normalizada = normalizar_texto(frase)
     probabilidades = modelo.predict_proba([frase_normalizada])[0]
     clases = modelo.classes_
@@ -80,11 +81,7 @@ def detectar_intencion(frase, umbral_confianza=0.5):
 
 def parafrasear_texto(topico: str, valor: str) -> str:
     # Inicializar el cliente de Cohere con tu clave de API
-    co = cohere.ClientV2('z0U0usZ1wAOKCGr5JN83d9neMj4YA4KEHLeZ5OUX')  # Reemplaza 'TU_API_KEY' con tu clave real
-    
-    print("topico",topico,", valor",valor)
-    # Crear el mensaje para el modelo
-
+    co = cohere.ClientV2('z0U0usZ1wAOKCGr5JN83d9neMj4YA4KEHLeZ5OUX') 
                 
 
     # Llamar al modelo usando el endpoint de chat
@@ -109,6 +106,5 @@ def parafrasear_texto(topico: str, valor: str) -> str:
         
     )
 
-    # Devolver el texto parafraseado
-    print("respuesta", respuesta.message.content[0].text)
+   
     return respuesta.message.content[0].text

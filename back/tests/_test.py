@@ -67,7 +67,6 @@ async def test_get_valor_uf():
     assert int(resultado) > 0
 
 # T-06: Test de conexión a API de UF
-
 @pytest.mark.asyncio
 async def test_conexion_ufapi():
     url = f"https://api.cmfchile.cl/api-sbifv3/recursos_api/uf?apikey={UF_API_KEY}"
@@ -155,7 +154,7 @@ async def test_conexion_cohere():
         pytest.fail("Request timed out")
 
 
-
+# T-17 Parafrasear valor de la UF
 @pytest.mark.asyncio
 async def test_parafrasear_uf():
     topico = "uf"
@@ -164,6 +163,7 @@ async def test_parafrasear_uf():
     assert "30.000" in resultado or "Treinta mil" in resultado
 
 
+# T-18 Parafrasear valor del clima
 @pytest.mark.asyncio
 async def test_parafrasear_clima():
     topico = "clima"
@@ -171,6 +171,8 @@ async def test_parafrasear_clima():
     resultado = parafrasear_texto(topico, valor)
     assert "15" in resultado
 
+
+# T-19 Parafrasear valor del dolar
 @pytest.mark.asyncio
 async def test_parafrasear_dolar():
     topico = "dolar"

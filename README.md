@@ -4,7 +4,7 @@ Este proyecto incluye tanto el **frontend** como el **backend** en el mismo repo
 
 ## Requisitos previos
 
-- **Python 3.13 o superior** (para el backend)
+- **Python Python 3.11.9 o superior** (para el backend)
 - **Node.js 22.14.0 o superior (Las superiores son inestable)** y **pnpm** (para el frontend)
 - **Linux (Ubuntu recomendado)** o **Windows** como sistema operativo
 
@@ -59,6 +59,10 @@ pip install -r requirements.txt
 **Linux y Windows:**
 ```bash
 uvicorn main:app --reload
+```
+### Para ejecutar tests
+```
+pytest -vv > tests\docs\test
 ```
 
 ## Iniciar el Frontend
